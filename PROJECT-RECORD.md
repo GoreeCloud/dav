@@ -55,6 +55,18 @@ These are **candidate branch** capabilities, not accepted `main` implementation.
 
 No submitted review/approval was present in the recorded candidate state.
 
+## 2026-09-08 — Draft PR #1 safety review blockers
+
+A submitted review on exact head `993802393d8ad832b10f29f70f57efa8612dee3f` identified two blockers that are not covered by the green CI results:
+
+1. **Plaintext non-loopback Development exposure.** The candidate permits a non-loopback listener when Development username/password credentials are configured while the executable serves ordinary HTTP. This can expose Basic credentials and DAV content in plaintext. Development must remain loopback-only unless an explicitly accepted secure transport boundary is required and validated.
+
+2. **Non-atomic conditional PUT.** The candidate evaluates `If-Match` / `If-None-Match` before calling a storage write that does not bind the expected ETag/existence state to publication. Concurrent conditional PUTs can therefore validate the same old state and overwrite one another. Conditional-write enforcement must move into an atomic storage operation, serialization boundary, or equivalent compare-and-swap mechanism with a lost-update regression test.
+
+The review explicitly states that green CI on the candidate head does not cover these safety conditions and that a corrected head must be revalidated before Ready-for-Review status.
+
+These blockers remain part of the project record until authoritative PR #1 evidence demonstrates they are resolved.
+
 ## DAV compliance correction
 
 The draft implementation intentionally emits no DAV compliance class/token.
