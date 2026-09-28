@@ -1,9 +1,17 @@
 # GoreeCloud DAV — Implemented Features
 
-> **Authority:** Repository-native implemented-feature record. Verified repository source and acceptance evidence remain controlling.
+> **Authority:** Repository-native accepted-implementation record. Draft pull requests are not implementation authority.
 
-## Verified current source statement
+## Current accepted state
 
-The repository README identifies GoreeCloud DAV as the first-party DAV server engine and states support for WebDAV, CalDAV, CardDAV, and sync tokens.
+The authoritative `main` branch currently contains project and feature documentation but **does not contain an accepted native GoreeCloud DAV service implementation**.
 
-This is retained as a source-level capability statement only; the migration does not infer broader interoperability, deployment, release acceptance, or Stable status.
+Accordingly, no WebDAV, CalDAV, CardDAV, sync-token, production-authentication, deployment, or platform-integration capability is promoted as accepted implementation by this record.
+
+## Draft candidate evidence
+
+Draft PR #1 contains the current native Go Development candidate and has passed its recorded exact-head CI and Platform Contract workflows.
+
+That branch includes substantial DAV foundation code, but it remains unmerged and therefore does not become accepted implementation through this file.
+
+When implementation is reviewed, accepted, merged, and read back from authoritative `main`, this record must be updated from the accepted revision and its verification evidence.
