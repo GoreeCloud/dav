@@ -171,7 +171,9 @@ Applicable Wardveil Security and service-level security requirements include:
 - abuse resistance;
 - integrity validation;
 - privacy-conscious diagnostics;
-- fail-closed behavior when required security evidence or authorization is missing.
+- fail-closed behavior when required security evidence or authorization is missing;
+- no non-loopback Development serving of Basic credentials or DAV data over plaintext HTTP; non-loopback exposure requires an explicitly accepted secure transport boundary;
+- atomic enforcement of conditional PUT preconditions so If-Match / If-None-Match checks cannot race the underlying resource publication.
 
 Credentials and reusable secrets must not be committed to repository history.
 
